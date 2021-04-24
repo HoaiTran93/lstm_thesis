@@ -1,0 +1,60 @@
+
+run_config = { 'Xserver' : True,
+               'log_file' : 'logs/run.log',
+               'experiment_id' : "power_jun7",
+               # 'data_folder': 'resources/data/nab/nab_machine_temperature/',
+               # 'data_folder': 'resources/data/discords/space_shuttle/',
+               # 'data_folder': 'resources/data/discords/dutch_power/',
+               # 'data_folder': 'resources/data/discords/gesture/',
+               # 'data_folder': 'resources/data/discords/memory/',
+               'data_folder': 'resources/data/discords/stock/',
+              #  'data_folder': 'resources/data/discords/ECG/',
+                  # 'data_folder': 'resources/data/discords/respiration/',
+               'save_figure': True
+               }
+
+opt_config = { 'Xserver' : True,
+               'log_file' : '../logs/opt.log',
+               'opt_run_id': "machine_temp_may24",
+              #  'data_folder': '../resources/data/discords/ECG/',
+               # 'data_folder': '../resources/data/discords/space_shuttle/',
+               # 'data_folder': 'resources/data/discords/dutch_power/',
+               # 'data_folder': 'resources/data/discords/gesture/',
+               # 'data_folder': 'resources/data/discords/memory/',
+               'data_folder': 'resources/data/discords/stock/',
+               # 'data_folder': 'resources/data/nab/nab_machine_temperature/',
+                  # 'data_folder': 'resources/data/discords/respiration/',
+               'save_figure': True,
+               'model': 'stateful',
+               'max_iter': 3,
+                'initial_evals': 1
+               }
+
+multi_step_lstm_config = {  'batch_size': 256,
+                            'n_epochs': 600,
+                            'dropout': 0.1,
+                            'look_back': 5,
+                            'look_ahead':3,
+                            'layers':{'input': 1, 'hidden1':60, 'hidden2':30,  'output': 1},
+                           #   'layers':{'input': 1, 'hidden1': 200, 'hidden2': 80, 'hidden3': 40,'output': 1},
+                           #  'layers': {'input': 1, 'hidden1': 300, 'output': 1},
+                            'loss': 'mse',
+                           #  'optimizer': 'adam',
+                            'train_test_ratio' : 0.7,
+                            'shuffle': False,
+                            'validation': True,
+                            'learning_rate': .1,
+                            'patience':5,
+                           }
+#
+# multi_step_lstm_config = {  'experiment_id' : "multistep_multikpi",
+#                             'batch_size' : 1024,
+#                             'n_epochs' : 5,
+#                             'train_test_ratio' : 0.7,
+#                             'dropout' : 0.4,
+#                             'look_back' : 24,
+#                             'look_ahead' : 12,
+#                             'layers':{'input': 1, 'hidden1': 5, 'hidden2': 30, 'hidden3': 5, 'output': 1},
+#                             'loss':'mse',
+#                             'optimizer':'rmsprop'
+#                            }
